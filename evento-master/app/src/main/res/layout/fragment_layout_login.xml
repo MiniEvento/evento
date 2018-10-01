@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:layout_height="wrap_content"
+    android:paddingTop="20dp">
+
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:textColor="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/email"
+            android:ems="10"
+            android:id="@+id/field_email"
+            android:layout_gravity="center_horizontal"
+            />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <android.support.design.widget.TextInputEditText
+        android:textColor="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        android:id="@+id/field_password"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <android.support.design.widget.TextInputEditText
+        android:visibility="gone"
+        android:textColor="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/hint_verification"
+        android:id="@+id/field_organizer_verification"
+        android:layout_gravity="center_horizontal"/>
+    </android.support.design.widget.TextInputLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Caption"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/forgot_password"
+        android:id="@+id/text_forgot_password"/>
+    <Button
+        style="@style/BlackCurvedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_sign_in"
+        android:text="@string/sign_in"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        style="@style/Base.TextAppearance.AppCompat.Caption"
+        android:text="@string/or"/>
+
+    <Button
+        style="@style/BlackCurvedButton"
+        android:text="Sign In with Google"
+        android:id="@+id/sign_in_google_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        style="@style/Base.TextAppearance.AppCompat.Caption"
+        android:text="@string/or"/>
+    <Button
+        style="@style/BlackCurvedButton"
+        android:id="@+id/become_an_organizer_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Become an Organizer"
+        />
+    <Button
+        style="@style/BlackCurvedButton"
+        android:id="@+id/sign_up_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:onClick="signUp"
+        android:text="Sign Up"
+        />
+
+
+</LinearLayout>

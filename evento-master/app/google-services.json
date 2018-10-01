@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "54233348078",
+    "firebase_url": "https://evento-master-2da83.firebaseio.com",
+    "project_id": "evento-master-2da83",
+    "storage_bucket": "evento-master-2da83.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54233348078:android:2e08bde4596f075a",
+        "android_client_info": {
+          "package_name": "com.fireblaze.evento"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54233348078-bcm0hd47v0rdv7006e80ss4fl9vpf83e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fireblaze.evento",
+            "certificate_hash": "477121f6cce2f54b27def584acfdef246eb222dd"
+          }
+        },
+        {
+          "client_id": "54233348078-rl4uscg059da2j0om0gvdo10f00tjud4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNnR0S2PgjZWmbEeWwJD8JLxCo47GWhds"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54233348078-rl4uscg059da2j0om0gvdo10f00tjud4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

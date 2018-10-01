@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fireblaze.evento">
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         myLocation permissions for the 'MyLocation' functionality.
+         myLocation permissions for the 'MyLocation' functionality.
+    -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> -->
+    <permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activities.MainActivity" />
+        <activity
+            android:name=".activities.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.EventListActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AboutUsActivity"
+            android:label="@string/title_activity_about_us"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.MapActivity" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".activities.MapsActivity"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".activities.NewEventActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.OrganizerMainActivity"
+            android:label="@string/title_activity_organizer_main"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.NewOrganizerActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SelectLocation"
+            android:label="@string/title_activity_select_location" />
+        <activity android:name=".activities.CategoryActivity" />
+        <activity
+            android:name=".activities.EventDetailsActivity"
+            android:label="@string/title_activity_event_details"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.SendNotificationActivity"
+            android:label="@string/title_activity_send_notification"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <service
+            android:name=".MyMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".InstanceIDService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".activities.OrganizerDetailsActivity"
+            android:label="@string/title_activity_organizer_details"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.UserActivity"
+            android:label="@string/title_activity_user" />
+        <activity
+            android:name=".activities.ChangeUserNameActivity"
+            android:label="Change Name">
+            <intent-filter>
+                <action android:name="com.fireblaze.evento.CHANGE_USER_NAME" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.ChangeEmailActivity"
+            android:label="Change Email">
+            <intent-filter>
+                <action android:name="com.fireblaze.evento.CHANGE_EMAIL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.UploadImageActivity" />
+        <activity android:name=".activities.BookedEventsListActivity" />
+        <activity android:name=".activities.BookmarksDetailsActivity" />
+        <activity android:name=".activities.OrganizerListActivity" />
+        <activity android:name=".activities.NewUserActivity" />
+        <activity
+            android:name=".activities.EventAttendeesListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.QRCodeActivity" />
+        <activity android:name=".activities.QRCodeScanActivity" />
+        <activity
+            android:name=".activities.AttendeesActivity"
+            android:label="@string/title_activity_attendees"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.NewOrganizerActivity2" />
+        <activity android:name=".content_organizer_details2" />
+        <activity
+            android:name=".activities.Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.FullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_fullscreen"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".activities.EventListActivity2"
+            android:label="@string/title_activity_event_list2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.OrganizerDetailsActivity2"
+            android:label="@string/title_activity_organizer_details2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.OrganizerDetailsActivity3"
+            android:label="@string/title_activity_organizer_details3"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.EventDetailsActivity2"
+            android:label="@string/title_activity_event_details2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.PaymentActivity"
+            android:label="@string/title_activity_payment"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>
