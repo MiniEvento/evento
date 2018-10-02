@@ -14,11 +14,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
-
-/**/
-
-
 public class AboutUsActivity extends AppCompatActivity {
     ActivityAboutUsBinding binding;
     DatabaseReference mDatabase;
@@ -68,5 +63,3 @@ public class AboutUsActivity extends AppCompatActivity {
     }
 
 }
-//pratik yeda ahe
-//xyz
