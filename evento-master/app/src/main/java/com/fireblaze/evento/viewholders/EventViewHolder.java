@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.fireblaze.evento.R;
 import com.fireblaze.evento.activities.AttendeesActivity;
 import com.fireblaze.evento.activities.EventDetailsActivity;
+import com.fireblaze.evento.activities.EventDetailsActivity2;
 import com.fireblaze.evento.activities.NewEventActivity;
 import com.fireblaze.evento.activities.QRCodeScanActivity;
 import com.fireblaze.evento.models.Event;
@@ -46,7 +47,13 @@ public class EventViewHolder extends RecyclerView.ViewHolder implements View.OnC
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventDetailsActivity.navigate(context, event.getEventID());
+
+                if(isOrganizer) {
+                    EventDetailsActivity2.navigate(context,event.getEventID());
+                }
+                else {
+                    EventDetailsActivity.navigate(context,event.getEventID());
+                }
             }
         });
         itemView.setTag(event.getEventID());

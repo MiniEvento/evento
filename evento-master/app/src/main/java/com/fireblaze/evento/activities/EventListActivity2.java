@@ -48,7 +48,7 @@ public class EventListActivity2 extends BaseActivity {
 
     private boolean isBookmarked=false;
 
-    private static final String TAG = EventListActivity.class.getSimpleName();
+    private static final String TAG = EventListActivity2.class.getSimpleName();
     @Override
     public View getContainer() {
         return findViewById(R.id.activity_event_list);

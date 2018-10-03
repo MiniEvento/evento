@@ -141,17 +141,7 @@
             android:name=".activities.AttendeesActivity"
             android:label="@string/title_activity_attendees"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.NewOrganizerActivity2" />
-        <activity android:name=".content_organizer_details2" />
-        <activity
-            android:name=".activities.Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.FullscreenActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_fullscreen"
-            android:theme="@style/FullscreenTheme" />
+
         <activity
             android:name=".activities.EventListActivity2"
             android:label="@string/title_activity_event_list2"
@@ -160,10 +150,7 @@
             android:name=".activities.OrganizerDetailsActivity2"
             android:label="@string/title_activity_organizer_details2"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.OrganizerDetailsActivity3"
-            android:label="@string/title_activity_organizer_details3"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".activities.EventDetailsActivity2"
             android:label="@string/title_activity_event_details2"
@@ -171,7 +158,8 @@
         <activity
             android:name=".activities.PaymentActivity"
             android:label="@string/title_activity_payment"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>

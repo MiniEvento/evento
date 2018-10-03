@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +13,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.fireblaze.evento.Constants;
 import com.fireblaze.evento.R;
-import com.fireblaze.evento.databinding.ActivityEventDetailsBinding;
+import com.fireblaze.evento.databinding.ActivityEventDetails2Binding;
 import com.fireblaze.evento.models.Event;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,25 +21,25 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class EventDetailsActivity extends BaseActivity {
+public class EventDetailsActivity2 extends BaseActivity {
 
     public static final String EVENT_ID_KEYWORD = "EVENT_ID";
     public static final String ORGANIZER_ID_KEYWORD = "ORGANIZER_ID";
     private DatabaseReference mDatabase;
     private Event myEvent;
     private Toolbar toolbar;
-    ActivityEventDetailsBinding binding;
+    ActivityEventDetails2Binding binding;
 
 
     public static void navigate(@NonNull Context activity, @NonNull String eventID){
-        Intent i = new Intent(activity,EventDetailsActivity.class);
+        Intent i = new Intent(activity,EventDetailsActivity2.class);
         i.putExtra(EVENT_ID_KEYWORD,eventID);
         activity.startActivity(i);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_event_details);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_event_details2);
         getViews();
 
         final String eventID = getIntent().getStringExtra(EVENT_ID_KEYWORD);
@@ -59,7 +58,7 @@ public class EventDetailsActivity extends BaseActivity {
                         if(myEvent != null)
                             setupView();
                         else {
-                            Toast.makeText(EventDetailsActivity.this,"Error Occurred!",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EventDetailsActivity2.this,"Error Occurred!",Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     }
@@ -92,25 +91,6 @@ public class EventDetailsActivity extends BaseActivity {
 
         toolbar.setTitle("");
 
-        binding.content.btnBookNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String bookedStatus;
-                if(myEvent.getBookings().containsKey(getUid())){
-                   bookedStatus = "Event Unbooked!";
-                } else {
-
-                    Intent i = new Intent(EventDetailsActivity.this,PaymentActivity.class);
-                    startActivity(i);
-
-                    bookedStatus = "Event Booked!";
-                }
-                myEvent.book(getUid());
-                Snackbar.make(view, bookedStatus, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         hideProgressDialog();
     }
 
