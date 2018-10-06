@@ -76,9 +76,10 @@
             </android.support.design.widget.TextInputLayout>
             <Button
                 android:id="@+id/btn_become_volunteer"
-                android:text="Become a volunteer"
+                android:text="@string/become_a_volunteer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 style="@style/BlackCurvedButton"/>
 
         </LinearLayout>

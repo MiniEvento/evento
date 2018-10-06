@@ -250,4 +250,5 @@
     <string name="title_activity_rateus">RateusActivity</string>
     <string name="title_activity_view_rating">viewRatingActivity</string>
     <string name="title_activity_view_ratings">viewRatingsActivity</string>
+    <string name="become_a_volunteer">Become a volunteer</string>
 </resources>
