@@ -81,7 +81,6 @@ public class OrganizerDetailsActivity extends BaseActivity implements View.OnCli
                 }
         );
 
-
     }
     private void setupView(Organizer o){
         showProgressDialog();
@@ -90,8 +89,8 @@ public class OrganizerDetailsActivity extends BaseActivity implements View.OnCli
         binding.content.textTitle.setText(o.getName());
         binding.content.textEmail.setText(o.getEmail());
         binding.content.textContact.setText(o.getPhone());
-        binding.content.textWebsite.setText(o.getWebsite());
-        binding.content.textBookingCount.setText(String.valueOf(o.getBookmarkCount()));
+        //binding.content.textWebsite.setText(o.getWebsite());
+       // binding.content.textBookingCount.setText(String.valueOf(o.getBookmarkCount()));
         binding.content.btnBecomeVolunteer.setOnClickListener(this);
        // TODO: setupImages();
         binding.content.textEmail.setOnClickListener(this);

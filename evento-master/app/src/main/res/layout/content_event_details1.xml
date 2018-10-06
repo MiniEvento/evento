@@ -87,22 +87,31 @@
 
 
                     </RelativeLayout>
+
                     <TextView
                         android:id="@+id/text_created_date"
                         android:text="01 Jan 2017 | 12:00"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Description:" />
+
                     <TextView
                         android:layout_marginTop="20dp"
                         android:id="@+id/text_event_details"
                         android:text="@string/lorem"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
+
                     <TextView
-                        android:layout_marginTop="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Venue"/>
+                        android:layout_marginTop="20dp"
+                        android:text="Venue:" />
                     <TextView
                         android:id="@+id/text_event_venue"
                         android:layout_width="wrap_content"
@@ -124,13 +133,32 @@
                         android:layout_height="wrap_content"
                         android:text="Prize:" />
 
+                    <RatingBar
+                        android:layout_marginTop="50dp"
+                        android:id="@+id/ratingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:stepSize="1"
+                        android:layout_gravity="center"
+                        />
+                    <Button
+                        android:id="@+id/submitButton"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Submit"
+                        android:padding="20dp"
+                        />
+
 
                 </LinearLayout>
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/event_images_viewpager"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp" />
+                    android:layout_height="200dp" />
 
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
@@ -147,5 +175,8 @@
             android:minHeight="?android:attr/actionBarSize"
             android:text="Book Now >"
             android:textAlignment="center" />
+
+
+
     </RelativeLayout>
 </layout>

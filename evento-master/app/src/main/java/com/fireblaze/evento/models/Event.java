@@ -42,7 +42,7 @@ public class Event {
     private Map<String, String> bookings = new HashMap<>();
     private Map<String, Boolean> presentMap = new HashMap<>();
     private int presentCount=0;
-    private int bookingsCount=0;
+    public int bookingsCount=0;
 
     //Timestamps
     private long dateScheduleStartTimestamp;

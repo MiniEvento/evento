@@ -3,12 +3,13 @@ package com.fireblaze.evento.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -26,8 +27,8 @@ public class EventDetailsActivity extends BaseActivity {
 
     public static final String EVENT_ID_KEYWORD = "EVENT_ID";
     public static final String ORGANIZER_ID_KEYWORD = "ORGANIZER_ID";
-    private DatabaseReference mDatabase;
-    private Event myEvent;
+    protected DatabaseReference mDatabase,mRatingDatebase;
+    protected Event myEvent;
     private Toolbar toolbar;
     ActivityEventDetailsBinding binding;
 
@@ -88,30 +89,61 @@ public class EventDetailsActivity extends BaseActivity {
         binding.content.textPrize.setText(prize);
 
 
-        Glide.with(this).load(myEvent.getImage()).into(binding.content.mainImage);
+        Glide.with(getApplicationContext()).load(myEvent.getImage()).into(binding.content.mainImage);
 
         toolbar.setTitle("");
+
+        if(myEvent.getBookings().containsKey(getUid())){
+            binding.content.btnBookNow.setEnabled(false);
+            binding.content.btnBookNow.setBackgroundColor(Color.GRAY);
+        }
 
         binding.content.btnBookNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String bookedStatus;
-                if(myEvent.getBookings().containsKey(getUid())){
-                   bookedStatus = "Event Unbooked!";
-                } else {
-
                     Intent i = new Intent(EventDetailsActivity.this,PaymentActivity.class);
                     startActivity(i);
 
-                    bookedStatus = "Event Booked!";
-                }
+
                 myEvent.book(getUid());
-                Snackbar.make(view, bookedStatus, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             }
         });
         hideProgressDialog();
+
+        //RatingBar
+
+        binding.content.submitButton.setClickable(false);
+        binding.content.submitButton.setBackgroundColor(Color.GRAY);
+
+        final RatingBar ratingBar = findViewById(R.id.ratingBar);
+
+        final String ratingID = mDatabase.push().getKey();
+        final String key = myEvent.getEventID();
+        final String okey = myEvent.getOrganizerID();
+
+
+
+        binding.content.submitButton.setClickable(true);
+        binding.content.submitButton.setBackgroundColor(Color.BLUE);
+
+        binding.content.submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String rating = "Rating : " + ratingBar.getRating();
+
+                Toast.makeText(getApplicationContext(),rating,Toast.LENGTH_SHORT).show();
+
+                mDatabase = FirebaseDatabase.getInstance().getReference().child("Ratings");
+                mRatingDatebase = mDatabase.child(ratingID);
+                mRatingDatebase.child("userID").setValue(getUid());
+                mRatingDatebase.child("eventID").setValue(key);
+                mRatingDatebase.child("organizerID").setValue(okey);
+                mRatingDatebase.child("Review").setValue(ratingBar.getRating());
+
+            }
+        });
     }
 
     private void getViews(){
@@ -125,8 +157,6 @@ public class EventDetailsActivity extends BaseActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 //        mBookedEventsDatabase = mDatabase.child(Constants.BOOKED_EVENTS);
-
-
     }
     @Override
     public View getContainer() {

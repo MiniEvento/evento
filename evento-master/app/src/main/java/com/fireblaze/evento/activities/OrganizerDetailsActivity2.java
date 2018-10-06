@@ -1,16 +1,12 @@
 package com.fireblaze.evento.activities;
 
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.fireblaze.evento.Constants;
 import com.fireblaze.evento.R;
@@ -21,8 +17,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 public class OrganizerDetailsActivity2 extends BaseActivity {
@@ -90,7 +84,7 @@ public class OrganizerDetailsActivity2 extends BaseActivity {
         binding.content.textTitle.setText(o.getName());
         binding.content.textEmail.setText(o.getEmail());
         binding.content.textContact.setText(o.getPhone());
-        binding.content.textWebsite.setText(o.getWebsite());
+        //binding.content.textWebsite.setText(o.getWebsite());
         binding.content.textBookingCount.setText(String.valueOf(o.getBookmarkCount()));
 //        binding.content.btnBecomeVolunteer.setOnClickListener(this);
 //        TODO: setupImages();

@@ -14,11 +14,14 @@ import com.fireblaze.evento.models.Event;
 
 
 
-public class BookedEventViewHolder extends RecyclerView.ViewHolder {
+public class BookedEventViewHolder extends  RecyclerView.ViewHolder {
 
     private TextView eventId, eventName;
     private Button btnCancel;
     private View rootView;
+
+    Event e = new Event();
+
     public BookedEventViewHolder(View itemView) {
         super(itemView);
         eventId =  (TextView) itemView.findViewById(R.id.booked_event_id);
@@ -40,7 +43,8 @@ public class BookedEventViewHolder extends RecyclerView.ViewHolder {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                event.booked(UserOperations.getUid());
+                    event.book(UserOperations.getUid());
+
             }
         });
 

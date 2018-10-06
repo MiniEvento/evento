@@ -51,7 +51,7 @@ public abstract class BaseActivity extends AppCompatActivity implements SnackBar
         return FirebaseAuth.getInstance().getCurrentUser();
     }
 
-    public String getUid(){
+    public static String getUid(){
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 

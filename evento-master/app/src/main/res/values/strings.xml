@@ -247,4 +247,7 @@
     <string name="title_activity_organizer_details3">OrganizerDetailsActivity3</string>
     <string name="title_activity_event_details2">EventDetailsActivity2</string>
     <string name="title_activity_payment">PaymentActivity</string>
+    <string name="title_activity_rateus">RateusActivity</string>
+    <string name="title_activity_view_rating">viewRatingActivity</string>
+    <string name="title_activity_view_ratings">viewRatingsActivity</string>
 </resources>

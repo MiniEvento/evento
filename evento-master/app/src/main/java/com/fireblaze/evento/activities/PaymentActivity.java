@@ -20,6 +20,11 @@ public class PaymentActivity extends AppCompatActivity {
     AlertDialog.Builder alertBuilder;
 
     @Override
+
+    public void onBackPressed() {
+
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
@@ -38,7 +43,7 @@ public class PaymentActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (cardForm.isValid()) {
                     alertBuilder = new AlertDialog.Builder(PaymentActivity.this);
-                    alertBuilder.setTitle("Confirm before purchase");
+                    alertBuilder.setTitle("Confirm before booking");
                     alertBuilder.setMessage("Card number: " + cardForm.getCardNumber() + "\n" +
                             "Card expiry date: " + cardForm.getExpirationDateEditText().getText().toString() + "\n" +
                             "Card CVV: " + cardForm.getCvv() + "\n" +

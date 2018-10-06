@@ -91,6 +91,7 @@ public class EventViewHolder extends RecyclerView.ViewHolder implements View.OnC
                 break;
             case 1:
                 Event.deleteEvent(myEvent.getEventID());
+
                 break;
             case 2:
                 AttendeesActivity.navigate(mContext,myEvent.getEventID(),myEvent.getBookings(),myEvent.getPresentMap());

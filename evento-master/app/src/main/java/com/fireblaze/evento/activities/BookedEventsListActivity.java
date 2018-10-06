@@ -64,6 +64,7 @@ public class BookedEventsListActivity extends AppCompatActivity {
         binding.recycler.setLayoutManager(layoutManager);
         binding.recycler.setAdapter(mAdapter);
 
+
     }
 
 }

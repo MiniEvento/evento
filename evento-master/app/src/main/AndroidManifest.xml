@@ -141,7 +141,6 @@
             android:name=".activities.AttendeesActivity"
             android:label="@string/title_activity_attendees"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".activities.EventListActivity2"
             android:label="@string/title_activity_event_list2"
@@ -150,7 +149,6 @@
             android:name=".activities.OrganizerDetailsActivity2"
             android:label="@string/title_activity_organizer_details2"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".activities.EventDetailsActivity2"
             android:label="@string/title_activity_event_details2"
@@ -159,7 +157,15 @@
             android:name=".activities.PaymentActivity"
             android:label="@string/title_activity_payment"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.RateusActivity"
+            android:label="@string/title_activity_rateus"
+            android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity
+            android:name=".activities.viewRatingsActivity"
+            android:label="@string/title_activity_view_ratings"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

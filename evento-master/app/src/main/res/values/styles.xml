@@ -46,4 +46,7 @@
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
+    <!--<style name="Rating_bar_style" parent="Base.Widget.AppCompat.RatingBar">-->
+        <!--<item name="andr-->
+    <!--</style>-->
 </resources>
