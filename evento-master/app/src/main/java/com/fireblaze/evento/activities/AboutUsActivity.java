@@ -3,6 +3,8 @@ package com.fireblaze.evento.activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.fireblaze.evento.R;
+
 public class AboutUsActivity extends AppCompatActivity {
 //    ActivityAboutUsBinding binding;
 //    DatabaseReference mDatabase;
@@ -10,7 +12,9 @@ public class AboutUsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_about_us);
 //        binding = DataBindingUtil.setContentView(this, R.layout.activity_about_us);
+
 //        setSupportActionBar(binding.toolbar);
 //        if(getSupportActionBar()!=null){
 //            getSupportActionBar().setHomeButtonEnabled(true);

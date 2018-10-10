@@ -4,11 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
+import android.media.Rating;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
@@ -23,6 +29,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EventDetailsActivity extends BaseActivity {
 
     public static final String EVENT_ID_KEYWORD = "EVENT_ID";
@@ -31,6 +40,16 @@ public class EventDetailsActivity extends BaseActivity {
     protected Event myEvent;
     private Toolbar toolbar;
     ActivityEventDetailsBinding binding;
+
+
+    //Rating
+
+    ListView listview;
+    ArrayList<String> list1;
+    ArrayAdapter<String> adapter1;
+    getRating rate;
+
+    //EndRating
 
 
     public static void navigate(@NonNull Context activity, @NonNull String eventID){
@@ -70,9 +89,6 @@ public class EventDetailsActivity extends BaseActivity {
 
                     }
                 });
-
-
-
     }
 
 
@@ -87,6 +103,11 @@ public class EventDetailsActivity extends BaseActivity {
         String prize = "Prize:" + myEvent.getPrizeAmount();
         binding.content.textFees.setText(fees);
         binding.content.textPrize.setText(prize);
+
+
+        final RatingBar ratingBar = findViewById(R.id.ratingBar);
+        final String key = myEvent.getEventID();
+
 
 
         Glide.with(getApplicationContext()).load(myEvent.getImage()).into(binding.content.mainImage);
@@ -113,37 +134,78 @@ public class EventDetailsActivity extends BaseActivity {
 
         //RatingBar
 
-        binding.content.submitButton.setClickable(false);
-        binding.content.submitButton.setBackgroundColor(Color.GRAY);
-
-        final RatingBar ratingBar = findViewById(R.id.ratingBar);
-
-        final String ratingID = mDatabase.push().getKey();
-        final String key = myEvent.getEventID();
-        final String okey = myEvent.getOrganizerID();
-
-
-
-        binding.content.submitButton.setClickable(true);
-        binding.content.submitButton.setBackgroundColor(Color.BLUE);
+//        final String ratingID = mDatabase.push().getKey();
+//        final String okey = myEvent.getOrganizerID();
 
         binding.content.submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String rating = "Rating : " + ratingBar.getRating();
-
-                Toast.makeText(getApplicationContext(),rating,Toast.LENGTH_SHORT).show();
+                String rate = "Rating : " + ratingBar.getRating();
 
                 mDatabase = FirebaseDatabase.getInstance().getReference().child("Ratings");
-                mRatingDatebase = mDatabase.child(ratingID);
-                mRatingDatebase.child("userID").setValue(getUid());
-                mRatingDatebase.child("eventID").setValue(key);
-                mRatingDatebase.child("organizerID").setValue(okey);
-                mRatingDatebase.child("Review").setValue(ratingBar.getRating());
+                mRatingDatebase = mDatabase.child(key);
+
+                Toast.makeText(getApplicationContext(),rate,Toast.LENGTH_SHORT).show();
+
+                mRatingDatebase.child(getUid()).child("Review").setValue(ratingBar.getRating());;
+            }
+        });
+
+        mDatabase = FirebaseDatabase.getInstance().getReference(getUid());
+
+//        final ListView l1 = findViewById(R.id.listview);
+//
+//        final List<String> itemList;
+//        itemList = new ArrayList<>();
+
+//        mDatabase.child("Ratings").child(key).child(getUid()).child("Review").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                for(DataSnapshot myItem: dataSnapshot.getChildren()){
+//                    itemList.clear();
+//                    getRating rInfo = myItem.getValue(getRating.class);
+//
+//                    itemList.add(rInfo.Review);
+//                }
+//
+//                adapter = new ArrayAdapter<>(EventDetailsActivity.this,android.R.layout.simple_list_item_1);
+//                l1.setAdapter(adapter);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+
+        rate = new getRating();
+        listview = findViewById(R.id.listview);
+        list1 = new ArrayList<>();
+        adapter1 = new ArrayAdapter<>(this,R.layout.rating,R.id.RatingInfo,list1);
+
+        mDatabase.child("Ratings").child(key).child(getUid()).child("Review").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot ds:dataSnapshot.getChildren()){
+
+                    rate = ds.getValue(getRating.class);
+                    list1.add(rate.getReview());
+                }
+
+                listview.setAdapter(adapter1);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
+
+        //EndRating
+
     }
 
     private void getViews(){

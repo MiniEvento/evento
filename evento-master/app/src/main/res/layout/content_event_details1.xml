@@ -149,8 +149,15 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Submit"
-                        android:padding="20dp"
                         />
+
+                    <ListView
+                        android:id="@+id/listview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:visibility="visible" />
+
 
 
                 </LinearLayout>
