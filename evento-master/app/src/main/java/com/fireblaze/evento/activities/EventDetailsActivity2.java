@@ -87,7 +87,7 @@ public class EventDetailsActivity2 extends BaseActivity {
         binding.content.textPrize.setText(prize);
 
 
-        Glide.with(this).load(myEvent.getImage()).into(binding.content.mainImage);
+        Glide.with(getApplicationContext()).load(myEvent.getImage()).into(binding.content.mainImage);
 
         toolbar.setTitle("");
 

@@ -43,17 +43,6 @@ public class AboutUsActivity extends AppCompatActivity {
 //                }
 //        );
 //    }
-//    private void setupView(DataSnapshot dataSnapshot){
-//        String anand, shivam, shankar, chaitanya;
-//        anand = (String) dataSnapshot.child("anand").getValue();
-//        shivam = (String) dataSnapshot.child("shivam").getValue();
-//        shankar = (String) dataSnapshot.child("shankar").getValue();
-//        chaitanya = (String) dataSnapshot.child("chaitanya").getValue();
-//        Glide.with(this).load(anand).into(binding.content.imageAnand);
-//        Glide.with(this).load(shankar).into(binding.content.imageShankar);
-//        Glide.with(this).load(shivam).into(binding.content.imageShivam);
-//        Glide.with(this).load(chaitanya).into(binding.content.imageChaitanya);
-//    }
 
     }
 }

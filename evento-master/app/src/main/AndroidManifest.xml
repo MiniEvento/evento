@@ -157,15 +157,7 @@
             android:name=".activities.PaymentActivity"
             android:label="@string/title_activity_payment"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.RateusActivity"
-            android:label="@string/title_activity_rateus"
-            android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity
-            android:name=".activities.viewRatingsActivity"
-            android:label="@string/title_activity_view_ratings"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

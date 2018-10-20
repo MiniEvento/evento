@@ -24,7 +24,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -49,6 +48,7 @@ public class SendNotificationActivity extends BaseActivity implements AdapterVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_notification);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getViews();
@@ -198,7 +198,7 @@ public class SendNotificationActivity extends BaseActivity implements AdapterVie
     public void pushFCMNotification(JSONArray recipients, String title, String content) throws Exception {
 
 
-        String authKey = "AIzaSyCmhrSM9A8BOZvrRX9EwdRKOPWYHWwFf4A"; // You FCM AUTH key
+        String authKey = "AAAADKCPN-4:APA91bEkLMLyq-9WSCE6Ztpjbb443fJXSdCqoZ1UM35fODSwvCmGglL6zFB4TAit2RAZuKQpJ65YKHj_CBwWsqEEXFwiVQG7e7tuZS3aQPV-QHjClh7ypD7UWtEBBf2DFFteIDCKHTeS";
 
 
 

@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "54233348078-kpqo345blg2nitgamd9gnhcvn499fm15.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fireblaze.evento",
+            "certificate_hash": "e82e7c3bb43a1f80289e0425f3c0dcd4adfde848"
+          }
+        },
+        {
           "client_id": "54233348078-rl4uscg059da2j0om0gvdo10f00tjud4.apps.googleusercontent.com",
           "client_type": 3
         }

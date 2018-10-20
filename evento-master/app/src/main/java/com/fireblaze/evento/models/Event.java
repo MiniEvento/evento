@@ -263,7 +263,7 @@ public class Event {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Log.e("Event", "onCancelled: ",databaseError.toException() );
+                        Log.e("Event", "onCancelled: ",databaseError.toException());
                     }
                 });
 

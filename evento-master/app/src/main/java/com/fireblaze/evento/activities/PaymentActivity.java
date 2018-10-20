@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.braintreepayments.cardform.view.CardForm;
 import com.fireblaze.evento.R;
+import com.fireblaze.evento.UserOperations;
+import com.fireblaze.evento.models.Event;
 
 public class PaymentActivity extends AppCompatActivity {
 
@@ -20,10 +22,11 @@ public class PaymentActivity extends AppCompatActivity {
     AlertDialog.Builder alertBuilder;
 
     @Override
-
     public void onBackPressed() {
-
+        super.onBackPressed();
     }
+
+    @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,8 +58,7 @@ public class PaymentActivity extends AppCompatActivity {
                             dialogInterface.dismiss();
                             Toast.makeText(PaymentActivity.this, "Event Successfully Booked", Toast.LENGTH_LONG).show();
 
-                            Intent intent = new Intent(PaymentActivity.this,MainActivity.class);
-                            startActivity(intent);
+                            onBackPressed();
                         }
                     });
                     alertBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

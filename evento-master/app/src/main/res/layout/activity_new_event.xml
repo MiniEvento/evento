@@ -37,7 +37,7 @@
                     android:id="@+id/input_layout_category"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <EditText
+                    <AutoCompleteTextView
                         android:id="@+id/input_category"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

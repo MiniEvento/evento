@@ -1,5 +1,6 @@
 package com.fireblaze.evento.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -7,8 +8,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.fireblaze.evento.Constants;
@@ -44,6 +47,7 @@ public class NewEventActivity extends BaseActivity implements DatePickerFragment
     private String imagePath;
     Calendar c = null;
 
+    String[] cat_sugg = {"Games","Coding"};
 
     @Override
     public void dateSet(int year, int month, int day, int hour, int min) {
@@ -90,17 +94,29 @@ public class NewEventActivity extends BaseActivity implements DatePickerFragment
         return findViewById(R.id.container);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_new_event);
+
+        binding.inputCategory.setAdapter(new ArrayAdapter<>(this,R.layout.category_suggestions,cat_sugg));
+
+        binding.inputCategory.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                binding.inputCategory.showDropDown();
+                return false;
+            }
+        });
+
         getViews();
         isEdit = getIntent().getBooleanExtra("isEdit",false);
         if(isEdit){
             editEvent(getIntent().getStringExtra(EVENT_ID));
         }
         if(getSupportActionBar() != null ){
-            getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+            //getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         binding.btnSubmit.setOnClickListener(this);
@@ -236,7 +252,6 @@ public class NewEventActivity extends BaseActivity implements DatePickerFragment
 
                     }
                 });
-
     }
 
     private void setupViewForEdit(Event e){

@@ -4,18 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
-import android.media.Rating;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -29,8 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class EventDetailsActivity extends BaseActivity {
 
@@ -41,15 +34,12 @@ public class EventDetailsActivity extends BaseActivity {
     private Toolbar toolbar;
     ActivityEventDetailsBinding binding;
 
-
     //Rating
 
-    ListView listview;
-    ArrayList<String> list1;
-    ArrayAdapter<String> adapter1;
-    getRating rate;
+    long total,total1,total2,total3,total4,total5;
+    long tot,tot1,tot2,tot3,tot4;
 
-    //EndRating
+    //End
 
 
     public static void navigate(@NonNull Context activity, @NonNull String eventID){
@@ -134,8 +124,6 @@ public class EventDetailsActivity extends BaseActivity {
 
         //RatingBar
 
-//        final String ratingID = mDatabase.push().getKey();
-//        final String okey = myEvent.getOrganizerID();
 
         binding.content.submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,30 +136,144 @@ public class EventDetailsActivity extends BaseActivity {
 
                 Toast.makeText(getApplicationContext(),rate,Toast.LENGTH_SHORT).show();
 
-                mRatingDatebase.child(getUid()).child("Review").setValue(ratingBar.getRating());;
+                mRatingDatebase.child("Rating 5");
+                mRatingDatebase.child("Rating 4");
+                mRatingDatebase.child("Rating 3");
+                mRatingDatebase.child("Rating 2");
+                mRatingDatebase.child("Rating 1");
+
+                if(ratingBar.getRating() == 5){
+                    mRatingDatebase.child("Rating 5").child(getUid()).setValue(ratingBar.getRating());
+
+                    mRatingDatebase.child("Rating 4").child(getUid()).removeValue();
+                    mRatingDatebase.child("Rating 3").child(getUid()).removeValue();
+                    mRatingDatebase.child("Rating 2").child(getUid()).removeValue();
+                    mRatingDatebase.child("Rating 1").child(getUid()).removeValue();
+                }
+
+                else if(ratingBar.getRating() == 4){
+                    mRatingDatebase.child("Rating 4").child(getUid()).setValue(ratingBar.getRating());
+
+                    mRatingDatebase.child("Rating 5").child(getUid()).removeValue();
+                    mRatingDatebase.child("Rating 3").child(getUid()).removeValue();
+                    mRatingDatebase.child("Rating 2").child(getUid()).removeValue();
+                    mRatingDatebase.child("Rating 1").child(getUid()).removeValue();
+                }
+
+                else if(ratingBar.getRating() == 3){
+                    mRatingDatebase.child("Rating 3").child(getUid()).setValue(ratingBar.getRating());
+
+                    mRatingDatebase.child("Rating 5").child(getUid()).removeValue();
+                    mRatingDatebase.child("Rating 4").child(getUid()).removeValue();
+                    mRatingDatebase.child("Rating 2").child(getUid()).removeValue();
+                    mRatingDatebase.child("Rating 1").child(getUid()).removeValue();
+                }
+
+                else if(ratingBar.getRating() == 2){
+                    mRatingDatebase.child("Rating 2").child(getUid()).setValue(ratingBar.getRating());
+
+                    mRatingDatebase.child("Rating 5").child(getUid()).removeValue();
+                    mRatingDatebase.child("Rating 4").child(getUid()).removeValue();
+                    mRatingDatebase.child("Rating 3").child(getUid()).removeValue();
+                    mRatingDatebase.child("Rating 1").child(getUid()).removeValue();
+                }
+
+                else if(ratingBar.getRating() == 1){
+                    mRatingDatebase.child("Rating 1").child(getUid()).setValue(ratingBar.getRating());
+
+                    mRatingDatebase.child("Rating 5").child(getUid()).removeValue();
+                    mRatingDatebase.child("Rating 4").child(getUid()).removeValue();
+                    mRatingDatebase.child("Rating 3").child(getUid()).removeValue();
+                    mRatingDatebase.child("Rating 2").child(getUid()).removeValue();
+                }
             }
         });
 
-        mDatabase = FirebaseDatabase.getInstance().getReference(getUid());
 
-//        final ListView l1 = findViewById(R.id.listview);
-//
-//        final List<String> itemList;
-//        itemList = new ArrayList<>();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
-//        mDatabase.child("Ratings").child(key).child(getUid()).child("Review").addValueEventListener(new ValueEventListener() {
+
+
+        final TextView t1 = findViewById(R.id.textView1);
+        final TextView t2 = findViewById(R.id.textView2);
+        final TextView t3 = findViewById(R.id.textView3);
+        final TextView t4 = findViewById(R.id.textView4);
+        final TextView t5 = findViewById(R.id.textView5);
+        final TextView t6 = findViewById(R.id.avgRating);
+        final TextView t7 = findViewById(R.id.textView7);
+
+
+        mDatabase.child("Ratings").child(key).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot != null && dataSnapshot.getValue() != null) {
+
+                    long cnt = dataSnapshot.child("Rating 5").getChildrenCount();
+                    String cnt1 = String.valueOf(cnt);
+                    t1.setText(cnt1);
+                    tot1 = cnt;
+                    total1 = cnt*5;
+
+                    long cnt2 = dataSnapshot.child("Rating 4").getChildrenCount();
+                    String cnt3 = String.valueOf(cnt2);
+                    t2.setText(cnt3);
+                    tot2 = cnt2;
+                    total2 = cnt2*4;
+
+                    long cnt4 = dataSnapshot.child("Rating 3").getChildrenCount();
+                    String cnt5 = String.valueOf(cnt4);
+                    t3.setText(cnt5);
+                    tot3 = cnt4;
+                    total3 = cnt4*3;
+
+                    long cnt6 = dataSnapshot.child("Rating 2").getChildrenCount();
+                    String cnt7 = String.valueOf(cnt6);
+                    t4.setText(cnt7);
+                    tot4 = cnt6;
+                    total4 = cnt6*2;
+
+                    long cnt8 = dataSnapshot.child("Rating 1").getChildrenCount();
+                    String cnt9 = String.valueOf(cnt8);
+                    t5.setText(cnt9);
+                    total5 = cnt8;
+
+                    tot = (int) tot1+tot2+tot3+tot4+total5;
+                    total = total1+total2+total3+total4+total5;
+
+                    String totReviews = String.valueOf(tot);
+                    t7.setText(totReviews);
+
+                    float avg = (float)total/tot;
+                    String avgDisplay = String.valueOf(avg);
+                    t6.setText(avgDisplay);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+//        mDatabase.child("Ratings").child(key).child("Rating 5").addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(DataSnapshot dataSnapshot) {
 //
-//                for(DataSnapshot myItem: dataSnapshot.getChildren()){
-//                    itemList.clear();
-//                    getRating rInfo = myItem.getValue(getRating.class);
+//                if (dataSnapshot != null && dataSnapshot.getValue() != null) {
 //
-//                    itemList.add(rInfo.Review);
+//                    long cnt = dataSnapshot.getChildrenCount();
+//
+//                    total1 = cnt*5;
+//
+//                    String cnt1 = String.valueOf(cnt);
+//                    t1.setText(cnt1);
+//
+////                    float rating = Float.parseFloat(dataSnapshot.getValue().toString());
+////                    ratingBar.setRating(rating);
+//
 //                }
-//
-//                adapter = new ArrayAdapter<>(EventDetailsActivity.this,android.R.layout.simple_list_item_1);
-//                l1.setAdapter(adapter);
 //            }
 //
 //            @Override
@@ -180,29 +282,129 @@ public class EventDetailsActivity extends BaseActivity {
 //            }
 //        });
 
-        rate = new getRating();
-        listview = findViewById(R.id.listview);
-        list1 = new ArrayList<>();
-        adapter1 = new ArrayAdapter<>(this,R.layout.rating,R.id.RatingInfo,list1);
+//        mDatabase.child("Ratings").child(key).child("Rating 4").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                if (dataSnapshot != null && dataSnapshot.getValue() != null) {
+//
+//                    long cnt = dataSnapshot.getChildrenCount();
+//
+//                    total2 = cnt*4;
+//
+//                    String cnt1 = String.valueOf(cnt);
+//                    t2.setText(cnt1);
+//
+////                    float rating = Float.parseFloat(dataSnapshot.getValue().toString());
+////                    ratingBar.setRating(rating);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//        mDatabase.child("Ratings").child(key).child("Rating 3").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                if (dataSnapshot != null && dataSnapshot.getValue() != null) {
+//
+//                    long cnt = dataSnapshot.getChildrenCount();
+//
+//                    total3 = cnt*3;
+//
+//                    String cnt1 = String.valueOf(cnt);
+//                    t3.setText(cnt1);
+//
+////                    float rating = Float.parseFloat(dataSnapshot.getValue().toString());
+////                    ratingBar.setRating(rating);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//        mDatabase.child("Ratings").child(key).child("Rating 2").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                if (dataSnapshot != null && dataSnapshot.getValue() != null) {
+//
+//                    long cnt = dataSnapshot.getChildrenCount();
+//
+//                    total4 = cnt*2;
+//
+//                    String cnt1 = String.valueOf(cnt);
+//                    t4.setText(cnt1);
+//
+////                    float rating = Float.parseFloat(dataSnapshot.getValue().toString());
+////                    ratingBar.setRating(rating);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//        mDatabase.child("Ratings").child(key).child("Rating 1").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                if (dataSnapshot != null && dataSnapshot.getValue() != null) {
+//
+//                    long cnt = dataSnapshot.getChildrenCount();
+//
+//                    total5 = cnt*1;
+//
+//                    String cnt1 = String.valueOf(cnt);
+//                    t5.setText(cnt1);
+//
+////                    float rating = Float.parseFloat(dataSnapshot.getValue().toString());
+////                    ratingBar.setRating(rating);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
-        mDatabase.child("Ratings").child(key).child(getUid()).child("Review").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for(DataSnapshot ds:dataSnapshot.getChildren()){
-
-                    rate = ds.getValue(getRating.class);
-                    list1.add(rate.getReview());
-                }
-
-                listview.setAdapter(adapter1);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+//        mDatabase.child("Ratings").child(key).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                if (dataSnapshot != null && dataSnapshot.getValue() != null) {
+//
+//                    long total = total1+total2+total3+total4+total5;
+//
+//                    String avg = String.valueOf(total);
+//                    t6.setText(avg);
+//
+////                    float rating = Float.parseFloat(dataSnapshot.getValue().toString());
+////                    ratingBar.setRating(rating);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
         //EndRating
 
