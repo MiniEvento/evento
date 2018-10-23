@@ -1,8 +1,5 @@
 package com.fireblaze.evento;
 
-/**
- * Created by chait on 8/27/2016.
- */
 
 public class Constants {
     public static final String ORGANIZER_IMAGE = "OrganizerImages";

@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.fireblaze.evento.activities.NewOrganizerActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -110,10 +111,14 @@ public class SelectLocation extends FragmentActivity implements OnMapReadyCallba
                 e.printStackTrace();
             }
         }
-        Address address = addressList.get(0);
-        LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-        mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
+        try {
+            Address address = addressList.get(0);
+            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+        }catch(Exception e){
+            Toast.makeText(this,"Enter valid place",Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

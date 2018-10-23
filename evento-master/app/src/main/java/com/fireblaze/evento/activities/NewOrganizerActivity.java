@@ -214,6 +214,8 @@ public class NewOrganizerActivity extends BaseActivity implements View.OnClickLi
             return;
         if(!validateWebsite())
             return;
+        if(!validatePhone())
+            return;
 
         uploadNewOrganizer(imagePath);
 
@@ -240,6 +242,21 @@ public class NewOrganizerActivity extends BaseActivity implements View.OnClickLi
         }
         return true;
     }
+
+    private boolean validatePhone(){
+        if(binding.inputPhone.getText().toString().trim().isEmpty()){
+            binding.inputLayoutPhone.setError("Please enter Phone Number");
+            requestFocus(binding.inputPhone);
+            return false;
+        }
+        else if(binding.inputPhone.getText().length() != 10){
+            binding.inputLayoutPhone.setError("Please enter Valid Phone Number");
+            requestFocus(binding.inputPhone);
+            return false;
+        }
+        return true;
+    }
+
     private boolean validateLocation(){
         return selectedMyLocation != null;
     }

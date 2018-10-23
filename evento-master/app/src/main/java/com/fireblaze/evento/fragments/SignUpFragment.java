@@ -10,10 +10,6 @@ import android.view.ViewGroup;
 
 import com.fireblaze.evento.R;
 
-/**
- * Created by chait on 6/7/2016.
- */
-
 public class SignUpFragment extends SignInBaseFragment {
     onSignUpListener signUpListener;
 
@@ -68,7 +64,7 @@ public class SignUpFragment extends SignInBaseFragment {
             isOrganizer = true;
             signUpListener.isOrganizer(true);
             mOrganizerVerification.setVisibility(View.VISIBLE);
-            mBecomeOrganizerButton.setText("Congrats! Click to cancel");
+            mBecomeOrganizerButton.setText("Click to cancel");
         } else {
             isOrganizer = false;
             signUpListener.isOrganizer(false);
